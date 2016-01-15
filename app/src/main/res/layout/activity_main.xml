@@ -9,85 +9,37 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <HorizontalScrollView
+    <LinearLayout
         android:layout_width="match_parent"
+        android:orientation="horizontal"
         android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:text="title"
+            tools:context=".BasicMapActivity" />
+        <!-- Map Fragment embedded with the map object -->
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="title"
-                tools:context=".BasicMapActivity" />
-            <!-- Map Fragment embedded with the map object -->
+        <android.widget.Button
+            android:id="@+id/homebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="goHome"
+            android:text="go home" />
+        <!-- UI element declaration for "Change Map Scheme" button -->
+        <android.widget.Button
+            android:id="@+id/schemebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="changeScheme"
+            android:text="changeScheme" />
+    </LinearLayout>
 
-            <android.widget.Button
-                android:id="@+id/homebutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="goHome"
-                android:text="回到原点" />
-            <!-- UI element declaration for "Change Map Scheme" button -->
-            <android.widget.Button
-                android:id="@+id/schemebutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="changeScheme"
-                android:text="换模式" />
-
-            <!-- UI element declaration for "Get Directions" button -->
-            <android.widget.Button
-                android:id="@+id/directionsbutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="getDirections"
-                android:text="路线" />
-        </LinearLayout>
-
-    </HorizontalScrollView>
-
-    <RelativeLayout
+    <fragment
+        android:id="@+id/mapfragment"
+        class="com.here.android.mpa.mapping.MapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <fragment
-            android:id="@+id/compositefragment"
-            class="com.here.android.mpa.ar.CompositeFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></fragment>
-
-        <Button
-            android:id="@+id/startLiveSight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:onClick="startLiveSight"
-            android:text="@string/label_button_startlivesight" />
-
-        <Button
-            android:id="@+id/stopLiveSight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:onClick="stopLiveSight"
-            android:text="@string/label_button_stoplivesight"
-            android:visibility="gone" />
-
-        <Button
-            android:id="@+id/toggleObject"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:onClick="toggleObject"
-            android:text="@string/label_button_addobject" />
-
-    </RelativeLayout>
+        android:layout_height="match_parent" />
 </LinearLayout>
