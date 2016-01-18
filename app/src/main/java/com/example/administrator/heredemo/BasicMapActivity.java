@@ -4,23 +4,23 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.here.android.mpa.cluster.ClusterLayer;
 import com.here.android.mpa.common.GeoCoordinate;
-import com.here.android.mpa.common.IconCategory;
 import com.here.android.mpa.common.Image;
 import com.here.android.mpa.common.OnEngineInitListener;
 import com.here.android.mpa.mapping.Map;
 import com.here.android.mpa.mapping.MapFragment;
 import com.here.android.mpa.mapping.MapMarker;
-import com.here.android.mpa.search.Category;
+import com.here.android.mpa.mapping.MapOverlay;
 
 import java.io.IOException;
 import java.util.List;
 
 public class BasicMapActivity extends Activity {
-    private double lat1 = 39.9662554440;
-    private double lon1 = 116.3422014811;
+    private double lat1 = 40.6940781;
+    private double lon1 = -73.9891212;
     private static String initial_scheme = "";
     private Map map = null;
     private MapFragment mapFragment = null;
@@ -81,13 +81,19 @@ public class BasicMapActivity extends Activity {
 
         MapMarker mm = new MapMarker();
         Image image = new Image();
-        image.setImageResource(R.mipmap.test);
+        image.setImageResource(R.mipmap.pin_start);
         mm.setIcon(image);
         mm.setCoordinate(new GeoCoordinate(lat1, lon1));
 
         ClusterLayer cl = new ClusterLayer();
         cl.addMarker(mm);
-        map.addClusterLayer(cl);
+        //..map.addClusterLayer(cl);
+        // create the button
+        TextView textView = new TextView(this);
+        textView.setText("纽约大学理工学院");
+
+        textView.setBackgroundResource(R.mipmap.pin_start);
+        map.addMapOverlay(new MapOverlay(textView, new GeoCoordinate(lat1, lon1, 0.0)));
 
 
     }
