@@ -62,6 +62,7 @@ public class BasicMapActivity extends Activity {
             map.setMapScheme(initial_scheme);
             if (!initial_scheme.isEmpty()) {
                 map.setMapScheme(initial_scheme);
+				// test
             }
         }
     }
